@@ -121,6 +121,13 @@ def main():
     key = ''.join(key_value)
     print(key, len(key))
 
+    file = open("key.txt", "w")
+    file.write(key)
+    file.close()
+
+
+
+
 
 if __name__ == '__main__':
     main()

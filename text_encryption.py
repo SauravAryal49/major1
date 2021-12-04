@@ -4,7 +4,6 @@ import sympy
 from key_generation import Crossover, mutation
 
 
-
 def convert_to_ascii(Strings):
     ascii_value = []
     for c in Strings:
@@ -46,8 +45,19 @@ def String_Split(binary):
     return (string1, string2)
 
 
-def main():
+def XOR_operation(message, key):
 
+    len_message = len(message)
+    encoded = []
+
+    for i in range(0, len_message):
+        a = i % len(key)
+        encoded.append(int(message[i]) ^ int(key[a]))
+
+    return encoded
+
+
+def main():
     print('Welcome to the encryption part')
     string = text_input()
 
@@ -69,17 +79,27 @@ def main():
     print("Cross over strings ")
     print(cross_string)
 
-    mutated_string = mutation(cross_string)
+    mutated = mutation(cross_string)
+    print(mutated)
+
+    mutated_string = ''.join(mutated)
+    print('Mutated value')
+    print(len(mutated_string))
     print(mutated_string)
 
-    print(len(mutated_string))
+    file = open("key.txt", 'r')
+    key = file.read()
+    print(key)
 
+    encrypted_message = XOR_operation(mutated_string, key)
+    print(encrypted_message)
 
-
+    send_file = open("data.csv", "w")
+    send_file.write(str(encrypted_message))
+    send_file.close()
 
 
 
 if __name__ == '__main__':
     print("my name is saurav")
-    print(key)
     main()
