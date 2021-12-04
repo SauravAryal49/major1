@@ -80,10 +80,11 @@ def calculate_shanon_entropy(Strings):
         shanon_entropy += entropy_i
 
     print(shanon_entropy)
-    return shanon_entropy,value
+    return shanon_entropy, value
 
 
 def main():
+    global key
     print("Welcome to the encryption part")
     characters = []
     prime = []
