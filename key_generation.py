@@ -2,7 +2,6 @@ import random
 import math
 import sympy
 import string
-import pandas as pd
 
 
 def convert_to_ascii(Strings):
@@ -27,14 +26,19 @@ def convert_to_binary(Strings):
 
 def Crossover(String1, String2):
     cross = []
+    cross1 = []
+    cross2 = []
     temp = String1
     for i in range(len(String1)):
         temp1 = String1[i][0:4] + String2[i][4:]
-        temp2 = String1[i][4:] + String2[i][0:4]
+        temp2 = String2[i][0:4] + String1[i][4:]
         print(temp1, temp2)
-        cross.append(temp1)
-        cross.append(temp2)
+        cross1.append(temp1)
+        cross2.append(temp2)
+        # cross.append(temp1)
+        # cross.append(temp2)
 
+    cross = cross1+cross2
     return cross
 
 
@@ -84,7 +88,6 @@ def calculate_shanon_entropy(Strings):
 
 
 def main():
-    global key
     print("Welcome to the encryption part")
     characters = []
     prime = []
@@ -94,12 +97,16 @@ def main():
         b = random.choice(string.ascii_uppercase)
         characters.append(b)
 
+    print("16 random characters")
     print(characters)
     ascii_characters = convert_to_ascii(characters)
+    print("ascii value of characters")
     print(ascii_characters)
+    print("16 random prime numbers")
     print(prime)
 
     binary_characters = convert_to_binary(characters)
+
     print(binary_characters)
 
     binary_prime = convert_to_binary(prime)

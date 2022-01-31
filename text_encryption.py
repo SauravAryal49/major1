@@ -1,6 +1,7 @@
 import random
 import math
 import sympy
+import csv
 from key_generation import Crossover, mutation
 
 
@@ -92,12 +93,11 @@ def main():
     print(key)
 
     encrypted_message = XOR_operation(mutated_string, key)
-    print(encrypted_message)
+    print(len(encrypted_message))
 
-    send_file = open("data.csv", "w")
-    send_file.write(str(encrypted_message))
-    send_file.close()
-
+    with open("data.csv", "w") as csvfile:
+        send_file = csv.writer(csvfile)
+        send_file.writerow(encrypted_message)
 
 
 if __name__ == '__main__':
