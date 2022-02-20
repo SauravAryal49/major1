@@ -142,8 +142,8 @@ def train_network(network, train_data, learn_rate, epoch_rate, n_outputs):
         #print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch, l_rate, sum_error))
 
         #print(strt)
-    if error_sum<=0.04:
-        return error_sum
+        if error_sum<=0.04:
+            return error_sum
     return error_sum
 
 def convert_to_list(data, cipher):
@@ -230,13 +230,15 @@ def main():
     ascii_array2 = strb.split(' ')
     ascii_array2.pop(0)
     print(ascii_array2)
-
+    print(type(ascii_array2))
 
     for item in ascii_array2:
         asciivalue=int(item)
         decrypted_text += chr(asciivalue)
     print("final decrypted text:")
     print(decrypted_text)
+
+
 
 
 
