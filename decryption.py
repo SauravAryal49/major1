@@ -156,3 +156,16 @@ def convert_to_list(data, cipher):
         datasets[i].append(cipher[i])
     # datasets = np.array(datasets).reshape(-1,2).tolist()
     return datasets
+
+
+def find_key(message):
+    length = int(len(message)/2)
+    key = message[length-66:length+62]
+    print(len(key))
+
+    code = message[length+62:length+66]
+    print(code)
+
+    encrypted_message = message[:length-66]+message[length+66:]
+    return encrypted_message,key,code
+

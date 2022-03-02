@@ -1,22 +1,24 @@
-from decryption import XOR_operation,convert_to_list,convert_to_eight,binary_array,setnetwork,train_network
+from decryption import find_key,XOR_operation,convert_to_list,convert_to_eight,binary_array,setnetwork,train_network
 
-def main():
-    file_name = open('data.csv', 'r')
-    encrypted_data = file_name.read()
-    encrypted = ''
-    for i in range(0, len(encrypted_data)):
-        if not encrypted_data[i] == ',':
-            encrypted += encrypted_data[i]
+
+def main(encrypted):
+    # file_name = open('text_data.csv', 'r')
+    # encrypted_data = file_name.read()
+    # encrypted = ''
+    # for i in range(0, len(encrypted_data)):
+    #     if not encrypted_data[i] == ',':
+    #         encrypted += encrypted_data[i]
 
     encrypted = encrypted.rstrip()
     print("obtained values")
     print(encrypted)
-    file = open("key.txt", 'r')
-    key = file.read()
-    print("key values")
-    print(key)
-
-    first_level_decryption = XOR_operation(encrypted, key)
+    separated_data, key, code = find_key(encrypted)
+    # file = open("key12.txt", 'w')
+    # key = file.read()
+    # print("key values")
+    # print(key)
+    print(separated_data)
+    first_level_decryption = XOR_operation(separated_data, key)
     print('separation from the key')
     print(first_level_decryption)
 
@@ -79,8 +81,7 @@ def main():
     print("final decrypted text:")
     print(decrypted_text)
 
-
-
+    return decrypted_text
 
 
 if __name__ == '__main__':

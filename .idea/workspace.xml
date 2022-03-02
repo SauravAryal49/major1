@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="4d28cbbd-61a1-455b-99a8-6225a7035c63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/decryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/encryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_decryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_encryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_decryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_encryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.docx" beforeDir="false" afterPath="$PROJECT_DIR$/test.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_decryption.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_encryption.py" afterDir="false" />
     </list>
@@ -50,7 +61,7 @@
       <recent name="C:\Users\aryal\Desktop\major" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.file_encryption">
+  <component name="RunManager" selected="Python.client">
     <configuration name="client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="major" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,7 +83,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="file_encryption" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="image_decryption" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="major" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,7 +95,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/file_encryption.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/image_decryption.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="image_encryption" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="major" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/image_encryption.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,34 +167,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="text_encryption" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="major" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/text_encryption.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.file_encryption" />
-        <item itemvalue="Python.server" />
-        <item itemvalue="Python.text_decryption" />
-        <item itemvalue="Python.text_encryption" />
         <item itemvalue="Python.client" />
+        <item itemvalue="Python.server" />
+        <item itemvalue="Python.image_decryption" />
+        <item itemvalue="Python.image_encryption" />
+        <item itemvalue="Python.text_decryption" />
       </list>
     </recent_temporary>
   </component>

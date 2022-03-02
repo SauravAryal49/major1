@@ -1,4 +1,4 @@
-from encryption import convert_to_ascii,convert_to_binary,XOR_operation,String_Split
+from encryption import bind_key_to_message,convert_to_ascii,convert_to_binary,XOR_operation,String_Split
 import csv
 from key_generation import Crossover, mutation
 
@@ -8,9 +8,9 @@ def text_input():
     return string.strip()
 
 
-def main():
+def main(message):
     print('Welcome to the encryption part')
-    string = text_input()
+    string = message
 
     print("The ascii values of the text values ")
     ascii_value = convert_to_ascii(string)
@@ -45,9 +45,17 @@ def main():
     encrypted_message = XOR_operation(mutated_string, key)
     print(len(encrypted_message))
 
-    with open("data.csv", "w") as csvfile:
+    encrypt_message = bind_key_to_message(encrypted_message, "0000")
+
+    print(type(encrypted_message))
+    print(encrypted_message)
+    print(encrypt_message)
+
+    with open("text_data.csv", "w") as csvfile:
         send_file = csv.writer(csvfile)
-        send_file.writerow(encrypted_message)
+        send_file.writerow(encrypt_message)
+
+
 
 
 if __name__ == '__main__':

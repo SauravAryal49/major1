@@ -1,16 +1,20 @@
 import PyPDF2
 import docx
+from encryption import convert_to_binary, convert_to_ascii, String_Split, XOR_operation
+from key_generation import Crossover, mutation
+import csv
+
 
 def read_file(filename):
-    file_type=filename.split(".")
+    file_type = filename.split(".")
 
-    if file_type[1] =='txt':
+    if file_type[1] == 'txt':
         content = ''
         file = open(filename, "r")
         for line in file:
             for char in line:
                 content += char
-        content = content+'\r'+'\n'
+        content = content + '\r' + '\n'
         return content
 
     if file_type[1] == 'pdf':
@@ -49,11 +53,43 @@ def main():
     file_content = read_file(filename)
     print(file_content)
 
+    print("ascii values of the file content")
+    ascii_value = convert_to_ascii(file_content)
 
+    print("binary values of the ascii value")
+    binary_values = convert_to_binary(ascii_value)
 
+    print('Split binary array into two')
+    string1, string2 = String_Split(binary_values)
+    print(string1)
+    print(string2)
+
+    cross_string = Crossover(string1, string2)
+
+    print("Cross over strings ")
+    print(cross_string)
+
+    mutated = mutation(cross_string)
+    print(mutated)
+
+    mutated_string = ''.join(mutated)
+    print('Mutated value')
+    print(len(mutated_string))
+    print(mutated_string)
+
+    file = open("key.txt", 'r')
+    key = file.read()
+    print(key)
+
+    encrypted_message = XOR_operation(mutated_string, key)
+    print(len(encrypted_message))
+
+    file_type = filename.split(".")
+
+    with open(file_type[0]+".csv", "w") as csvfile:
+        send_file = csv.writer(csvfile)
+        send_file.writerow(encrypted_message)
 
 
 if __name__ == '__main__':
     main()
-
-

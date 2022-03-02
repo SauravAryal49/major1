@@ -45,3 +45,29 @@ def XOR_operation(message, key):
         encoded.append(int(message[i]) ^ int(key[a]))
 
     return encoded
+
+
+def bind_key_to_message(message, code):
+    file = open("key.txt", 'r')
+    key = file.read()
+    print(type(key))
+
+    data = ''.join(str(e) for e in message)
+    print(type(data))
+    length = int(len(data)/2)
+    print(length)
+
+    actual_data = data[:length]+key+code+data[length:]
+    print(len(actual_data))
+
+    list_data = [int(a) for a in actual_data]
+    print(list_data)
+    print(type(list_data))
+
+    return list_data
+
+
+
+
+
+
