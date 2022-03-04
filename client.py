@@ -1,8 +1,10 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
-from tkinter import filedialog, Canvas, NW
+from tkinter import *
+from tkinter import filedialog
 import io
+import gc
 from image_encryption import main as img_encrypt_main
 from text_encryption import main as text_encrypt_main
 from text_decryption import main as text_decrypt_main
@@ -33,19 +35,21 @@ def receive():
 
             if code == "0000":
                 message = text_decrypt_main(msg)
-                msg_list.insert(tkinter.END, message)
+                msg_list.insert(tkinter.END, message + '\n')
 
             if code == "0100":
+                global img
                 print("you are successful")
                 img_data = img_decrypt_main(separated_data, key)
 
-                canvas = Canvas(top, width=300, height=300)
-                # canvas.pack()
                 img = ImageTk.PhotoImage(Image.open(io.BytesIO(img_data)))
-                canvas.create_image(20, 20, anchor=NW, image=img)
+                
+                msg_list.image = img
+                msg_list.image_create(END, image=img)
 
-                msg_list.insert(tkinter.END, canvas.pack())
-                msg_list.insert(tkinter.END, "you are on right path")
+                msg_list.insert(END, '\n')
+                gc.collect()
+
 
         except OSError:  # Possibly client has left the chat.
             break
@@ -83,7 +87,7 @@ def fileAction():
 
 
 def imageAction():
-    imagename = filedialog.askopenfilename(filetypes=(("Image File","*.jpg"),("Image File","*.png")))
+    imagename = filedialog.askopenfilename(filetypes=(("Image File", "*.jpg"), ("Image File", "*.png"), ("Image File", "*.gif")))
     send_image(imagename)
     # img = Image.open(imagename)
 
@@ -98,10 +102,11 @@ scrollbar = tkinter.Scrollbar(messages_frame)  # To navigate through past messag
 
 # Following will contain the messages.
 
-msg_list = tkinter.Listbox(messages_frame, height=25, width=70, yscrollcommand=scrollbar.set)
+msg_list = tkinter.Text(messages_frame, height=25, width=70,font=("Helvetica",16)  , yscrollcommand=scrollbar.set)
+
 scrollbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 msg_list.pack(side=tkinter.LEFT, fill=tkinter.BOTH)
-msg_list.pack()
+msg_list.pack(pady=20)
 messages_frame.pack()
 
 # message field

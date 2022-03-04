@@ -11,28 +11,28 @@ def main(encrypted):
 
     encrypted = encrypted.rstrip()
     print("obtained values")
-    print(encrypted)
+    # print(encrypted)
     separated_data, key, code = find_key(encrypted)
     # file = open("key12.txt", 'w')
     # key = file.read()
     # print("key values")
     # print(key)
-    print(separated_data)
+    # print(separated_data)
     first_level_decryption = XOR_operation(separated_data, key)
     print('separation from the key')
-    print(first_level_decryption)
+    # print(first_level_decryption)
 
     dataset = convert_to_eight(first_level_decryption)
     print('values in the segments of 8')
-    print(dataset)
-    print(len(dataset))
+    # print(dataset)
+    # print(len(dataset))
 
     cipher = binary_array(dataset)
-    print(cipher)
+    # print(cipher)
 
     datasets = convert_to_list(dataset, cipher)
 
-    print(datasets)
+    # print(datasets)
 
     # trying out to decrypt from here
 
@@ -51,7 +51,7 @@ def main(encrypted):
         print("Error")
 
     print("first Ascii conversion[array]:")
-    print(ascii_array)
+    # print(ascii_array)
 
 
     #second conversion to asccii value
@@ -62,24 +62,24 @@ def main(encrypted):
         ascii_array1.append(character)
         strb=strb+character
     print("First Ascii conversion:")
-    print(strb)
+    # print(strb)
     print("==========================================================")
     print("Second ascii conversion:[array]")
-    print(ascii_array1)
+    # print(ascii_array1)
 
 
 
     decrypted_text = ""
     ascii_array2 = strb.split(' ')
     ascii_array2.pop(0)
-    print(ascii_array2)
-    print(type(ascii_array2))
+    # print(ascii_array2)
+    # print(type(ascii_array2))
 
     for item in ascii_array2:
         asciivalue=int(item)
         decrypted_text += chr(asciivalue)
     print("final decrypted text:")
-    print(decrypted_text)
+    # print(decrypted_text)
 
     return decrypted_text
 

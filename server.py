@@ -6,6 +6,7 @@ from image_decryption import main as img_decrypt_main
 from decryption import find_key
 
 
+
 def text_csv():
     file_name = open('text_data.csv', 'r')
     encrypted_data = file_name.read()
@@ -53,6 +54,7 @@ def handle_client(client):  # Takes client socket as argument.
 
         if code == "0100":
             # img_decrypt_main(encrypted_message, key)
+            broadcast(bytes(name, "utf-8"))
             broadcast(bytes(msg, "utf-8"))
 
         elif code == "0000":
