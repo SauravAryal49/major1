@@ -1,8 +1,8 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
-from tkinter import filedialog
-
+from tkinter import filedialog, Canvas, NW
+import io
 from image_encryption import main as img_encrypt_main
 from text_encryption import main as text_encrypt_main
 from text_decryption import main as text_decrypt_main
@@ -28,7 +28,7 @@ def receive():
         try:
             msg = client_socket.recv(BUFSIZ).decode("utf8")
             print(type(msg))
-
+            print("you are at this point")
             separated_data, key, code = find_key(msg)
 
             if code == "0000":
@@ -37,8 +37,15 @@ def receive():
 
             if code == "0100":
                 print("you are successful")
-                # img_data = img_decrypt_main()
+                img_data = img_decrypt_main(separated_data, key)
 
+                canvas = Canvas(top, width=300, height=300)
+                # canvas.pack()
+                img = ImageTk.PhotoImage(Image.open(io.BytesIO(img_data)))
+                canvas.create_image(20, 20, anchor=NW, image=img)
+
+                msg_list.insert(tkinter.END, canvas.pack())
+                msg_list.insert(tkinter.END, "you are on right path")
 
         except OSError:  # Possibly client has left the chat.
             break
@@ -60,7 +67,7 @@ def send(event=None):  # event is passed by binders.
 def send_image(imageName):
     img_encrypt_main(imageName)
     img_data = text_csv("img_data.csv")
-    client_socket.send(bytes(img_data,"utf-8"))
+    client_socket.send(bytes(img_data, "utf-8"))
 
 
 def on_closing(event=None):
@@ -71,7 +78,7 @@ def on_closing(event=None):
 
 def fileAction():
     filename = filedialog.askopenfilename()
-    print('Selected:',filename)
+    print('Selected:', filename)
     send()
 
 
@@ -81,7 +88,6 @@ def imageAction():
     # img = Image.open(imagename)
 
 
-
 top = tkinter.Tk()
 top.title("Chatter")
 
@@ -89,8 +95,8 @@ messages_frame = tkinter.Frame(top)
 my_msg = tkinter.StringVar()  # For the messages to be sent.
 my_msg.set("Type your messages here.")
 scrollbar = tkinter.Scrollbar(messages_frame)  # To navigate through past messages.
-# Following will contain the messages.
 
+# Following will contain the messages.
 
 msg_list = tkinter.Listbox(messages_frame, height=25, width=70, yscrollcommand=scrollbar.set)
 scrollbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
@@ -104,31 +110,29 @@ entry_field.bind("<Return>", send)
 entry_field.pack()
 
 # file select
-file_select = tkinter.Button(top,text="Select File To Send",command=fileAction)
+file_select = tkinter.Button(top, text="Select File To Send", command=fileAction)
 file_select.pack()
 
 #image select
-image_select = tkinter.Button(top,text="Select Image to Send", command = imageAction )
+image_select = tkinter.Button(top, text="Select Image to Send", command=imageAction)
 image_select.pack()
 
 # send button
 send_button = tkinter.Button(top, text="Send", command=send)
 send_button.pack()
 
-
-
 top.protocol("WM_DELETE_WINDOW", on_closing)
 
 #----Now comes the sockets part----
-HOST = input('Enter host: ')
-
+# HOST = input('Enter host: ')
+HOST = '127.0.0.1'
 PORT = input('Enter port: ')
 if not PORT:
     PORT = 33000
 else:
     PORT = int(PORT)
 
-BUFSIZ = 10000
+BUFSIZ = 10000000
 ADDR = (HOST, PORT)
 
 client_socket = socket(AF_INET, SOCK_STREAM)

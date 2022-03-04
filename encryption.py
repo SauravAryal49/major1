@@ -59,10 +59,9 @@ def bind_key_to_message(message, code):
 
     actual_data = data[:length]+key+code+data[length:]
     print(len(actual_data))
-
+    print(code)
     list_data = [int(a) for a in actual_data]
-    print(list_data)
-    print(type(list_data))
+
 
     return list_data
 

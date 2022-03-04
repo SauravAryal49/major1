@@ -32,7 +32,7 @@ def Crossover(String1, String2):
     for i in range(len(String1)):
         temp1 = String1[i][0:4] + String2[i][4:]
         temp2 = String2[i][0:4] + String1[i][4:]
-        print(temp1, temp2)
+        # print(temp1, temp2)
         cross1.append(temp1)
         cross2.append(temp2)
         # cross.append(temp1)

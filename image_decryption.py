@@ -3,39 +3,44 @@ from text_decryption import convert_to_eight,convert_to_list,binary_array,setnet
 import base64
 from PIL import Image
 import io
+from decryption import find_key
 
 
-def main():
-    file_name = open('img_data.csv', 'r')
-    encrypted_data = file_name.read()
-    encrypted = ''
-    for i in range(0, len(encrypted_data)):
-        if not encrypted_data[i] == ',':
-            encrypted += encrypted_data[i]
+def main(encrypt_mssg, key):
+    # file_name = open('img_data.csv', 'r')
+    # encrypted_data = file_name.read()
+    # encrypted = ''
+    # for i in range(0, len(encrypted_data)):
+    #     if not encrypted_data[i] == ',':
+    #         encrypted += encrypted_data[i]
+    #
+    # encrypted = encrypted.rstrip()
+    # print("obtained values")
+    #
+    # encrypt_mssg,key,code = find_key(encrypted)
+    #
+    # print(key,code)
 
-    encrypted = encrypted.rstrip()
-    print("obtained values")
-    print(encrypted)
-    file = open("key.txt", 'r')
-    key = file.read()
-    print("key values")
-    print(key)
+    # file = open("key.txt", 'r')
+    # key = file.read()
+    # print("key values")
+    # print(key)
 
-    first_level_decryption = XOR_operation(encrypted, key)
+    first_level_decryption = XOR_operation(encrypt_mssg, key)
     print('separation from the key')
-    print(first_level_decryption)
+    # print(first_level_decryption)
 
     dataset = convert_to_eight(first_level_decryption)
     print('values in the segments of 8')
-    print(dataset)
-    print(len(dataset))
+    # print(dataset)
+    # print(len(dataset))
 
     cipher = binary_array(dataset)
-    print(cipher)
+    # print(cipher)
 
     datasets = convert_to_list(dataset, cipher)
 
-    print(datasets)
+    # print(datasets)
 
     # trying out to decrypt from here
 
@@ -54,7 +59,7 @@ def main():
         print("Error")
 
     print("first Ascii conversion[array]:")
-    print(ascii_array)
+    # print(ascii_array)
 
 
     #second conversion to asccii value
@@ -65,33 +70,37 @@ def main():
         ascii_array1.append(character)
         strb=strb+character
     print("First Ascii conversion:")
-    print(strb)
+    # print(strb)
     print("==========================================================")
     print("Second ascii conversion:[array]")
-    print(ascii_array1)
+    # print(ascii_array1)
 
 
 
     decrypted_text = ""
     ascii_array2 = strb.split(' ')
     ascii_array2.pop(0)
-    print(ascii_array2)
-    print(type(ascii_array2))
+    # print(ascii_array2)
+    # print(type(ascii_array2))
 
     for item in ascii_array2:
-        asciivalue=int(item)
+        asciivalue = int(item)
         decrypted_text += chr(asciivalue)
     print("final decrypted text:")
-    print(decrypted_text)
-
+    # print(decrypted_text)
 
     reverse_data = base64.b64decode(decrypted_text)
-    print(reverse_data)
-
-    return reverse_data
+    # print(reverse_data)
 
     # img = Image.open(io.BytesIO(reverse_data))
     # img.show()
+
+    return reverse_data
+
+
+if __name__ == '__main__':
+    print("my name is saurav")
+    main()
 
 
 

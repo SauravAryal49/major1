@@ -47,9 +47,6 @@ def main(message):
 
     encrypt_message = bind_key_to_message(encrypted_message, "0000")
 
-    print(type(encrypted_message))
-    print(encrypted_message)
-    print(encrypt_message)
 
     with open("text_data.csv", "w") as csvfile:
         send_file = csv.writer(csvfile)

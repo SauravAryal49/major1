@@ -2,6 +2,8 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from text_encryption import main as text_encrypt_main
 from text_decryption import main as text_decrypt_main
+from image_decryption import main as img_decrypt_main
+from decryption import find_key
 
 
 def text_csv():
@@ -44,27 +46,39 @@ def handle_client(client):  # Takes client socket as argument.
     clients[client] = name
 
     while True:
-        msg = client.recv(BUFSIZ)
-        message = text_decrypt_main(msg)
-        if message != "{quit}":  #bytes("{quit}", "utf8"):
+        msg = client.recv(BUFSIZ).decode("utf8")
+        msg = msg.rstrip()
 
-            full_msg = name1 + ":" + message
-            text_encrypt_main(full_msg)
-            pass_msg = text_csv()
-            broadcast(bytes(pass_msg, "utf-8"))
-            # broadcast(msg, name)
-            # broadcast(msg)
-        else:
-            client.send(bytes("{quit}", "utf8"))
-            client.close()
-            del clients[client]
-            broadcast(bytes("%s has left the chat." % name, "utf8"))
-            break
+        encrypted_message, key, code = find_key(msg)
+
+        if code == "0100":
+            # img_decrypt_main(encrypted_message, key)
+            broadcast(bytes(msg, "utf-8"))
+
+        elif code == "0000":
+            message = text_decrypt_main(msg)
+
+            if message != "{quit}":  #bytes("{quit}", "utf8"):
+                full_msg = name1 + ":" + message
+                text_encrypt_main(full_msg)
+                pass_msg = text_csv()
+                broadcast(bytes(pass_msg, "utf-8"))
+
+            else:
+                # text_encrypt_main("{quit}")
+                # pass_msg = text_csv()
+                # client.send(bytes(pass_msg, "utf8"))
+                client.close()
+                del clients[client]
+                quiting_msg = name1 + " has left the chat"
+                text_encrypt_main(quiting_msg)
+                quit_msg = text_csv()
+                broadcast(bytes(quit_msg, "utf8"))
+                break
 
 
 def broadcast(msg, prefix=""):  # prefix is for name identification.
     """Broadcasts a message to all the clients."""
-
 
     for sock in clients:
         # sock.send(bytes(prefix1, "utf8"), msg)
@@ -76,7 +90,7 @@ addresses = {}
 
 HOST = ''
 PORT = 33000
-BUFSIZ = 10000
+BUFSIZ = 10000000
 ADDR = (HOST, PORT)
 
 SERVER = socket(AF_INET, SOCK_STREAM)

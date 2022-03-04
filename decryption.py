@@ -33,8 +33,8 @@ def binary_array(data):
     # mutate = mutation(cross)
     print('values after mutation')
     # print(mutate)
-    print(cross)
-    print(len(cross))
+    # print(cross)
+    # print(len(cross))
     print(".....")
 
     binary_value = []
@@ -159,13 +159,19 @@ def convert_to_list(data, cipher):
 
 
 def find_key(message):
+
+
     length = int(len(message)/2)
     key = message[length-66:length+62]
-    print(len(key))
 
     code = message[length+62:length+66]
-    print(code)
 
     encrypted_message = message[:length-66]+message[length+66:]
-    return encrypted_message,key,code
+
+    print("In find key")
+    print(encrypted_message[:5])
+    print(encrypted_message[0])
+    print(encrypted_message[0:7])
+    print("code in the find_key "+code)
+    return encrypted_message, key, code
 

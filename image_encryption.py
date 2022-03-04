@@ -8,15 +8,14 @@ import csv
 from encryption import bind_key_to_message
 
 
-
 def main(imagePath):
     im = Image.open(imagePath)
+    # im = Image.open('123.jpg')
     im_resize = im.resize((500, 500))
     buf = io.BytesIO()
     im_resize.save(buf, format='JPEG')
     byte_im = buf.getvalue()
     print(byte_im)
-
 
     byte_string = base64.b64encode(byte_im).decode("ASCII")
     print(byte_string)
@@ -55,54 +54,21 @@ def main(imagePath):
 
     encrypt_message = bind_key_to_message(encrypted_message, "0100")
 
+    print(len(encrypt_message))
+
     with open("img_data.csv", "w") as csvfile:
         send_file = csv.writer(csvfile)
-        send_file.writerow(encrypted_message)
+        send_file.writerow(encrypt_message)
 
 
-
-
-
-# value = []
-# for i in binary_value:
-#     data = int(i,2)
-#     value.append(data)
-#
-#
-# print("The data in the values field")
-# print(value)
+if __name__ == '__main__':
+    print("welcome to the encryption of image")
+    main()
 
 
 
 
 
 
-# decrpted_image_info=''
-# for item in value:
-#     character = chr(item)
-#     decrpted_image_info=decrpted_image_info+character
-# #
-# print(decrpted_image_info)
-#
-# ascii_array2=decrpted_image_info.split(' ')
-# print(ascii_array2)
-#
-# decrypted_text = ""
-#
-# print("checking ....")
-#
-# print(type(ascii_array2))
-#
-# for item_value in ascii_array2[1:]:
-#     asciivalue=int(item_value)
-#     decrypted_text += chr(asciivalue)
-#
-# print("final decrypted text:")
-# print(decrypted_text)
-#
-# reverse_data = base64.b64decode(decrypted_text)
-# print(reverse_data)
-#
-#
-# img = Image.open(io.BytesIO(reverse_data))
-# img.show()
+
+
