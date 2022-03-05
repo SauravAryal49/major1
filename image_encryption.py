@@ -16,7 +16,7 @@ def main(imagePath):
     last_part = imagePath.split(".")
     print(last_part[1])
     # im = Image.open('123.jpg')
-    im_resize = im.resize((500, 500))
+    im_resize = im.resize((250, 250))
     buf = io.BytesIO()
 
     if last_part[1] == "jpg" or last_part[1] == "jpeg" or last_part[1] == "jfif" or last_part[1] == "pjp" or last_part[1] == "pjpeg":

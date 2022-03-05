@@ -11,6 +11,7 @@ from text_decryption import main as text_decrypt_main
 from image_decryption import main as img_decrypt_main
 from PIL import ImageTk,Image
 from decryption import find_key
+import self
 
 
 def text_csv(name):
@@ -25,6 +26,7 @@ def text_csv(name):
 
 
 def receive():
+
     """Handles receiving of messages."""
     while True:
         try:
@@ -38,17 +40,24 @@ def receive():
                 msg_list.insert(tkinter.END, message + '\n')
 
             if code == "0100":
-                global img
                 print("you are successful")
                 img_data = img_decrypt_main(separated_data, key)
 
                 img = ImageTk.PhotoImage(Image.open(io.BytesIO(img_data)))
-                
-                msg_list.image = img
-                msg_list.image_create(END, image=img)
+
+                # msg_list.text = img
+                # msg_list.image = img
+                # msg_list.image_create(END, image=img)
+                #
+                # msg_list.insert(END, '\n')
+
+                label = Label(msg_list, image=img)
+                label.image = img # keep a reference!
+
+                msg_list.window_create(END, window=label)
 
                 msg_list.insert(END, '\n')
-                gc.collect()
+
 
 
         except OSError:  # Possibly client has left the chat.
