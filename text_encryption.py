@@ -1,4 +1,4 @@
-from encryption import bind_key_to_message,convert_to_ascii,convert_to_binary,XOR_operation,String_Split
+from encryption import bind_key_to_message, convert_to_ascii, convert_to_binary, XOR_operation, String_Split
 import csv
 from key_generation import Crossover, mutation
 
@@ -46,7 +46,6 @@ def main(message):
     print(len(encrypted_message))
 
     encrypt_message = bind_key_to_message(encrypted_message, "0000")
-
 
     with open("text_data.csv", "w") as csvfile:
         send_file = csv.writer(csvfile)

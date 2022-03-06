@@ -4,10 +4,17 @@
     <list default="true" id="4d28cbbd-61a1-455b-99a8-6225a7035c63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_encryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_decryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_encryption.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/img_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/text_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/text_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_decryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_encryption.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

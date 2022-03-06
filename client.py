@@ -1,17 +1,19 @@
+import os
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
 from tkinter import *
 from tkinter import filedialog
 import io
-import gc
+import random
 from image_encryption import main as img_encrypt_main
 from text_encryption import main as text_encrypt_main
 from text_decryption import main as text_decrypt_main
 from image_decryption import main as img_decrypt_main
 from PIL import ImageTk,Image
 from decryption import find_key
-import self
+from file_encryption import main as file_encrypt_main
+from file_decryption import main as file_decrypt_main
 
 
 def text_csv(name):
@@ -26,7 +28,6 @@ def text_csv(name):
 
 
 def receive():
-
     """Handles receiving of messages."""
     while True:
         try:
@@ -45,18 +46,22 @@ def receive():
 
                 img = ImageTk.PhotoImage(Image.open(io.BytesIO(img_data)))
 
-                # msg_list.text = img
-                # msg_list.image = img
-                # msg_list.image_create(END, image=img)
-                #
-                # msg_list.insert(END, '\n')
-
                 label = Label(msg_list, image=img)
                 label.image = img # keep a reference!
 
                 msg_list.window_create(END, window=label)
-
                 msg_list.insert(END, '\n')
+
+                image_name = "image" + str(random.randint(1000, 4000))
+                saved_folder = os.environ["HOMEPATH"] + "\Desktop\Project_Files\img\ "
+                image1 = Image.open(io.BytesIO(img_data))
+                image1.resize((500, 500))
+                image1.save(saved_folder+image_name+".png")
+
+            if code[:2] == "11":
+                file_decrypt_main(separated_data, key, code)
+
+
 
 
 
@@ -83,6 +88,15 @@ def send_image(imageName):
     client_socket.send(bytes(img_data, "utf-8"))
 
 
+def send_file(filename):
+    file_encrypt_main(filename)
+    actual_name = filename.split("/")
+    first_name = actual_name[-1].split(".")
+    encrypt_mssg = text_csv(first_name[0]+".csv")
+    client_socket.send(bytes(encrypt_mssg, "utf-8"))
+
+
+
 def on_closing(event=None):
     """This function is to be called when the window is closed."""
     my_msg.set("{quit}")
@@ -90,9 +104,8 @@ def on_closing(event=None):
 
 
 def fileAction():
-    filename = filedialog.askopenfilename()
-    print('Selected:', filename)
-    send()
+    filename = filedialog.askopenfilename(filetypes=(("File", "*.pdf"), ("File", "*.docx"), ("File", "*.txt")))
+    send_file(filename)
 
 
 def imageAction():
@@ -146,6 +159,7 @@ if not PORT:
 else:
     PORT = int(PORT)
 
+SEPARATOR = "<SEPARATOR>"
 BUFSIZ = 10000000
 ADDR = (HOST, PORT)
 

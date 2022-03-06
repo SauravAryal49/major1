@@ -45,11 +45,12 @@ def main(encrypted):
     ascii_array = []
     # first conversion of ascii value
     if error < 0.19:
-        for item  in cipher:
+        for item in cipher:
             ascii_array.append(item)
     else:
         print("Error")
 
+    print(error)
     print("first Ascii conversion[array]:")
     # print(ascii_array)
 

@@ -78,6 +78,14 @@ def handle_client(client):  # Takes client socket as argument.
                 broadcast(bytes(quit_msg, "utf8"))
                 break
 
+        elif code[:2] == "11":
+            send_mssg = name1 + " has send a file"
+            text_encrypt_main(send_mssg)
+            send_mssg1 = text_csv()
+            broadcast(bytes(msg, "utf8"))
+            broadcast(bytes(send_mssg1, "utf8"))
+
+
 
 def broadcast(msg, prefix=""):  # prefix is for name identification.
     """Broadcasts a message to all the clients."""

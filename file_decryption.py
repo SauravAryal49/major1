@@ -1,26 +1,28 @@
+import os
+import random
+
+from docx.enum.style import WD_STYLE_TYPE
+
 from text_decryption import main
 from decryption import XOR_operation, convert_to_list, convert_to_eight, binary_array, setnetwork, train_network
 import docx
+from docx.shared import Pt
 import PyPDF2
 
 
-def file_main():
+def main(encrypted, key, code):
     print("Welcome to the decryption of the file section")
 
-    file_name = open('test.csv', 'r')
-    encrypted_data = file_name.read()
-    encrypted = ''
-    for i in range(0, len(encrypted_data)):
-        if not encrypted_data[i] == ',':
-            encrypted += encrypted_data[i]
+    # file_name = open('test.csv', 'r')
+    # encrypted_data = file_name.read()
+    # encrypted = ''
+    # for i in range(0, len(encrypted_data)):
+    #     if not encrypted_data[i] == ',':
+    #         encrypted += encrypted_data[i]
 
     encrypted = encrypted.rstrip()
     print("obtained values")
     print(encrypted)
-    file = open("key.txt", 'r')
-    key = file.read()
-    print("key values")
-    print(key)
 
     first_level_decryption = XOR_operation(encrypted, key)
     print('separation from the key')
@@ -82,22 +84,22 @@ def file_main():
     print("final decrypted text:")
     print(decrypted_text)
 
-    first_name = file_name.name.split(".")
+    file_name = "file" + str(random.randint(1000, 4000))
 
-    file_type = str(input("Insert File Type"))
-
-    saved_folder = r'C:\Users\aryal\Desktop\Project_Files\ '
-    if file_type == 'docx':
+    # saved_folder = r'C:\Users\aryal\Desktop\Project_Files\ '
+    saved_folder = os.environ["HOMEPATH"] + "\Desktop\Project_Files\ "
+    if code == '1110':
         doc = docx.Document()
-        doc.add_paragraph(decrypted_text)
-        doc.save(saved_folder + first_name[0] + ".docx")
 
-    if file_type == 'txt':
-        file = open(saved_folder+first_name[0]+".txt", "w")
+        style = doc.styles['Normal']
+        font = style.font
+        font.name = "Times New Roman"
+        font.size = Pt(12)
+
+        doc.add_paragraph(decrypted_text)
+        doc.save(saved_folder + file_name + ".docx")
+
+    if code == "1100":
+        file = open(saved_folder + file_name + ".txt", "w")
         file.write(decrypted_text)
         file.close()
-
-
-
-if __name__ == '__main__':
-    file_main()
