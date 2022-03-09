@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4d28cbbd-61a1-455b-99a8-6225a7035c63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_decryption.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_encryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/decryption.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_encryption.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/img_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/key.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/text_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/text_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_decryption.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_encryption.py" afterDir="false" />
@@ -48,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Try code/new" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -123,7 +119,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="image_encryption" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="key_generation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="major" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -135,7 +131,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/image_encryption.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/key_generation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,10 +164,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.client" />
+        <item itemvalue="Python.key_generation" />
         <item itemvalue="Python.server" />
-        <item itemvalue="Python.image_decryption" />
-        <item itemvalue="Python.image_encryption" />
         <item itemvalue="Python.decryption" />
+        <item itemvalue="Python.image_decryption" />
       </list>
     </recent_temporary>
   </component>

@@ -20,11 +20,11 @@ def main(encrypted):
     # print(separated_data)
     first_level_decryption = XOR_operation(separated_data, key)
     print('separation from the key')
-    # print(first_level_decryption)
+    print(first_level_decryption)
 
     dataset = convert_to_eight(first_level_decryption)
     print('values in the segments of 8')
-    # print(dataset)
+    print(dataset)
     # print(len(dataset))
 
     cipher = binary_array(dataset)
@@ -40,7 +40,7 @@ def main(encrypted):
     n_outputs = 255
 
     network = setnetwork(n_inputs, 2, n_outputs)
-    error = train_network(network, datasets, 0.2, 5000, n_outputs)
+    error = train_network(network, datasets, 0.5, 5000, n_outputs)
 
     ascii_array = []
     # first conversion of ascii value

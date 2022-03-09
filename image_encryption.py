@@ -10,6 +10,7 @@ from encryption import bind_key_to_message
 
 def main(imagePath):
     im = Image.open(imagePath)
+    print(im)
     print("The image extension method method")
     print(type(imagePath))
 

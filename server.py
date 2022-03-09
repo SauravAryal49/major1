@@ -23,7 +23,7 @@ def accept_incoming_connections():
     while True:
         client, client_address = SERVER.accept()
         print("%s:%s has connected." % client_address)
-        welcome_message = "Greetings from the cave! Now type your name and press enter!"
+        welcome_message = "Greetings! Now type your name and press enter!"
         text_encrypt_main(welcome_message)
         welcome_data = text_csv()
         client.send(bytes(welcome_data, "utf8"))
@@ -49,7 +49,7 @@ def handle_client(client):  # Takes client socket as argument.
     while True:
         msg = client.recv(BUFSIZ).decode("utf8")
         msg = msg.rstrip()
-
+        print(msg)
         encrypted_message, key, code = find_key(msg)
 
         if code == "0100":

@@ -129,18 +129,22 @@ def train_network(network, train_data, learn_rate, epoch_rate, n_outputs):
     error_sum = -1
     print('training the data')
 
-    for row in train_data:
-        outputs = feedforward(network, row)
-        expected = [0 for i in range(255)]
-        #print(row[-1])
-        expected[row[-1]] = 1
-        error_sum += sum([(expected[i]-outputs[i])**2/(255*2*10) for i in range(len(expected))])
-        backpropogation(network, expected)
-        update_weights(network, row, learn_rate)
-        #print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch, l_rate, sum_error))
+    for epoch in range(epoch_rate):
+        error_sum = 0
+        for row in train_data:
+            outputs = feedforward(network, row)
+            expected = [0 for i in range(255)]
+            #print(row[-1])
+            expected[row[-1]] = 1
+            sum1= error_sum
+            error_sum += sum([(expected[i]-outputs[i])**2/(255*2*10) for i in range(len(expected))])
+            if round(sum1,2) == round(error_sum,2):
+                break
+            backpropogation(network, expected)
+            update_weights(network, row, learn_rate)
 
-        #print(strt)
-        if error_sum<=0.04:
+        print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch, learn_rate, error_sum))
+        if error_sum <= 0.04:
             return error_sum
     return error_sum
 
@@ -159,8 +163,6 @@ def convert_to_list(data, cipher):
 
 
 def find_key(message):
-
-
     length = int(len(message)/2)
     key = message[length-66:length+62]
 
